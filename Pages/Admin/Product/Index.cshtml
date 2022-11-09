@@ -1,0 +1,87 @@
+﻿@page "{currentPage:int?}"
+@model WebRazor.Pages.Product.IndexModel
+@{
+    ViewData["PageTitle"] = "Product List";
+    var pageModel = new WebRazor.Helper.PageHelper()
+            {
+                pageCurrent = Model.currentPage,
+                totalPages = Model.totalPages,
+                generateUrl = (int? currentPage)
+                    => Url.Page("/Admin/Product/Index", new { currentPage = currentPage, search = Model.search, categoryChoose = Model.categoryChoose })
+            };
+}
+<div class="path-admin">PRODUCTS LIST</div>
+<div class="content-main">
+    <div id="content-main-dashboard">
+        <div id="product-title-header">
+            <div id="product-title-1" style="width: 75%;">
+                <b>Filter by Catetory:</b>
+                <form method="get" style="display: flex;">
+                    <div>
+                        <select asp-for="categoryChoose">
+                            <option value="0">--- Select ---</option>
+                            @foreach (var cate in Model.Categories)
+                            {
+                                int id = @cate.CategoryId;
+                                <option value="@cate.CategoryId">@cate.CategoryName</option>
+                            }
+                        </select>
+                    </div>
+                    <div id="product-title-2" style="width: 80%; padding-top: 0%">
+                        <input style=" margin-left: 10%;" asp-for="search" placeholder="Enter product name to search" />
+                    </div>
+                    <input type="submit" value="Filter">
+                </form>
+            </div>
+
+            <div id="product-title-3" style="width: 20%; display: grid; margin: 1% 0;">
+                <a href="~/Admin/Product/CreateProduct">Create a new Product</a>
+                <a href="~/Admin/Export?dataTable=product">Export excel file</a>
+            </div>
+        </div>
+        <div id="order-table-admin">
+            @if (Model.products == null || Model.products.Count < 1)
+            {
+                <div style="margin: 1% 2%;" class="msg-error">Not found product(s)!</div>
+            }
+            else
+            {
+
+                <table id="orders">
+                    <tr>
+                        <th>ProductID</th>
+                        <th>ProductName</th>
+                        <th>UnitPrice</th>
+                        <th>Unit</th>
+                        <th>UnitsInStock</th>
+                        <th>Category</th>
+                        <th>Discontinued</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var p in Model.products)
+                    {
+                        <tr>
+                            <td><a href="#">@p.ProductId</a></td>
+                            <td>@p.ProductName</td>
+                            <td>@p.UnitPrice</td>
+                            <td>pieces</td>
+                            <td>@p.UnitsInStock</td>
+                            <td>@p.Category.CategoryName</td>
+                            <td>@p.Discontinued</td>
+                            <td>
+                                <a href="~/Admin/Product/Update?id=@p.ProductId">Edit</a> &nbsp; | &nbsp;
+                                <a href="~/Admin/Product/Delete?id=@p.ProductId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+        </div>
+        <div id="paging">
+            <partial name="_Paging" model="@pageModel" />
+        </div>
+    </div>
+</div>
+
+
