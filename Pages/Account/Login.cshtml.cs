@@ -37,7 +37,7 @@ namespace WebRazor.Pages.Account
 
             if (acc == null)
             {
-                ViewData["msg"] = "Email/ Password is wrong";
+                ViewData["msg"] = "Email or Password is invalid";
                 return Page();
             }
 
@@ -47,7 +47,7 @@ namespace WebRazor.Pages.Account
                     .SingleOrDefaultAsync(c => c.CustomerId == acc.CustomerId && c.Active == true);
                 if(customer == null)
                 {
-                    ViewData["msg"] = "Account is not active. Please contact admin for help!";
+                    ViewData["msg"] = "Account is not active!";
                     return Page();
                 }
             }
