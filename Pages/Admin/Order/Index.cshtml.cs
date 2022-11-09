@@ -70,8 +70,7 @@ namespace WebRazor.Pages.Admin.Order
                        orderby order.OrderDate ascending
                        select order;
             List<Models.Order> orders;
-            if (dateFrom == null || dateTo == null
-                || (dateFrom == null && dateTo == null))
+            if (dateFrom == null || dateTo == null)
             {
                 orders = list.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
             }
