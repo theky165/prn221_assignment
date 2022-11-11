@@ -53,12 +53,12 @@ namespace WebRazor.Pages.Account
             mailMessage.Subject = "[Reset Password]";
             mailMessage.Body = bodyMail;
             mailMessage.IsBodyHtml = false;
-            mailMessage.From = new MailAddress("theky165@gmail.com");
+            mailMessage.From = new MailAddress("anhnnvhe151254@fpt.edu.vn");
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
             smtp.Port = 587;
             smtp.UseDefaultCredentials = false;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("theky165@gmail.com", "kenbin160599");
+            smtp.Credentials = new System.Net.NetworkCredential("anhnnvhe151254@fpt.edu.vn", "vietanh1108");
             await smtp.SendMailAsync(mailMessage);
             ViewData["msg"] = "Please check you email!";
             return Page();
