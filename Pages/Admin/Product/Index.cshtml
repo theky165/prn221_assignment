@@ -38,6 +38,10 @@
                 <a href="~/Admin/Product/CreateProduct">Add Product</a>
                 <a href="~/Admin/Export?dataTable=product">Export Excel</a>
             </div>
+
+            <div>
+                <span class="msg-error">@TempData["deleteFailed"]</span>
+            </div>
         </div>
         <div id="order-table-admin">
             @if (Model.products == null || Model.products.Count < 1)

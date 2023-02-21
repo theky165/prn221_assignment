@@ -10323,11 +10323,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT_University\\PRN221_Razor\\WebRazor.csproj",
+      "projectUniqueName": "C:\\Users\\ky.tang\\Downloads\\prn221_assignment\\WebRazor.csproj",
       "projectName": "WebRazor",
-      "projectPath": "D:\\FPT_University\\PRN221_Razor\\WebRazor.csproj",
+      "projectPath": "C:\\Users\\ky.tang\\Downloads\\prn221_assignment\\WebRazor.csproj",
       "packagesPath": "C:\\Users\\ky.tang\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT_University\\PRN221_Razor\\obj\\",
+      "outputPath": "C:\\Users\\ky.tang\\Downloads\\prn221_assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ky.tang\\AppData\\Roaming\\NuGet\\NuGet.Config",

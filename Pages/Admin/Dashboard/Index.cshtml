@@ -7,6 +7,17 @@
 	<div class="content-main">
 		<div id="content-main-dashboard">
 			<div id="dashboard-1">
+@*				<div>
+					<form method="get" id="fromsub">
+						<select id="year" onchange="submitFrom()" asp-for="yearChoose">
+							<option></option>
+							<option value="1996">1996</option>
+							<option value="1997">1997</option>
+							<option value="1998">1998</option>
+							<option value="2022">2022</option>
+						</select>
+					</form>
+				</div>*@
 				<div id="dashboard-1-container">
 					<div class="dashboard-item">
 						<div class="dashboard-item-title">Weekly Sales</div>
@@ -87,6 +98,10 @@
 			}
 		});
 	}
+
+	//function submitFrom(){
+	//	document.getElementById('fromsub').submit();
+	//}
 
 	OrdersChart();
 	CustomersChart();

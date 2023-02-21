@@ -17,6 +17,9 @@ namespace WebRazor.Pages.Admin.Dashboard
         public long totalCus { get; set; }
         public long totalGuest { get; set; }
 
+        //[BindProperty(SupportsGet = true)]
+        //public int yearChoose { get; set; }
+
         public IndexModel(PRN221_DBContext dBContext)
         {
             db = dBContext;
@@ -25,7 +28,7 @@ namespace WebRazor.Pages.Admin.Dashboard
         {
             if (HttpContext.Session.GetString("Admin") == null)
             {
-                return Forbid();
+                return RedirectToPage("/Forbiden");
             }
             decimal wsales = 0;
             DateTime from = DateTime.Now.AddDays(-7);

@@ -35,17 +35,25 @@ namespace WebRazor.Pages.Admin.Product
             {
                 return NotFound();
             }
+                try
+                {
+                    Product = await _context.Products.FindAsync(id);
 
-            Product = await _context.Products.FindAsync(id);
+                    if (Product != null)
+                    {
+                        _context.Products.Remove(Product);
+                        await _context.SaveChangesAsync();
+                        await hubContext.Clients.All.SendAsync("ReloadProduct");
+                    }
 
-            if (Product != null)
-            {
-                _context.Products.Remove(Product);
-                await _context.SaveChangesAsync();
-                await hubContext.Clients.All.SendAsync("ReloadProduct");
+                    return RedirectToPage("./Index");
+                }
+                catch
+                {
+                var countProduct = _context.OrderDetails.Where(o => o.ProductId == id).Count();
+                TempData["deleteFailed"] = "Can not delete product in " + countProduct + " order";
+                return RedirectToPage("./Index");
             }
-
-            return RedirectToPage("./Index");
         }
     }
 }
